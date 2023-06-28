@@ -1,0 +1,20 @@
+/*  페이지 공통 */
+#container { width: 960px; border: 1px solid red; margin: 0 auto}
+/* container가 중앙에 오게 margin 0 auto 줌*/
+nav { margin-top: 50px}
+/* 제목과 메뉴 사이 margin 주기*/
+nav ul { list-style: none; padding: 0;}
+/* list style: none 으로 bulletpoint 없애기.. */
+nav li { display: inline-block; padding: 0 65px;}
+
+a:link {color: black; text-decoration: none; font-weight: bold }
+/*메뉴 글씨 색깔이 클릭했다고 보라색으로 변하지않게*/
+a:visited {color: black; }
+a:hover { color: red; text-decoration: underline;}
+a:active {color: orange; }
+
+.hr {background-color: black; height: 2px; opacity: 100%}
+
+main {min-height: 500px}
+
+.copy {text-align: center;}
