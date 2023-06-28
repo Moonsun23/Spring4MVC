@@ -1,5 +1,5 @@
 /*  페이지 공통 */
-#container { width: 960px; border: 1px solid red; margin: 0 auto}
+#container { width: 960px; margin: 0 auto}
 /* container가 중앙에 오게 margin 0 auto 줌*/
 nav { margin-top: 50px}
 /* 제목과 메뉴 사이 margin 주기*/
@@ -8,13 +8,30 @@ nav ul { list-style: none; padding: 0;}
 nav li { display: inline-block; padding: 0 65px;}
 
 a:link {color: black; text-decoration: none; font-weight: bold }
-/*메뉴 글씨 색깔이 클릭했다고 보라색으로 변하지않게*/
+
 a:visited {color: black; }
+/*메뉴 글씨 색깔이 클릭했다고 보라색으로 변하지않게*/
 a:hover { color: red; text-decoration: underline;}
 a:active {color: orange; }
+/* 해당 버튼을 실행시킬때.....*/
 
 .hr {background-color: black; height: 2px; opacity: 100%}
-
+/* hr: 수평선 그리기*/
 main {min-height: 500px}
 
 .copy {text-align: center;}
+
+/* 폼 공통 */
+ form { width: 320px; margin: 75px auto;   }
+ form div { padding: 5px }
+ form label { width: 110px; font-weight: bold; text-align: right}
+
+ form input { padding: 5px;}
+
+
+/* 회원정보*/
+.myinfo { width: 300px; margin: 0 auto;
+   border-collapse: collapse}
+
+.myinfo td, .myinfo th { padding: 7px}
+.myinfo th { text-align: right}
