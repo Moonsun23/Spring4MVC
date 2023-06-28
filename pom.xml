@@ -39,6 +39,11 @@
             <artifactId>spring-webmvc</artifactId>
             <version>${org.springframework-version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-jdbc</artifactId>
+            <version>${org.springframework-version}</version>
+        </dependency>
         <!-- web, jstl, -->
 
         <dependency>
@@ -112,6 +117,20 @@
             <version>3.0.8</version>
         </dependency>
 
+        <!-- connection pool -->
+        <!-- 김밥집.. 미리 말아놓는 곳 (connection pool)vs 그때그때 말아주는 곳..(connection pool을 안쓰는 곳..) 미리 객체를 생성해둔 것의 차이 // -->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-dbcp2</artifactId>
+            <version>2.9.0</version>
+        </dependency>
+
+        <!-- mariadb jdbc driver -->
+        <dependency>
+            <groupId>org.mariadb.jdbc</groupId>
+            <artifactId>mariadb-java-client</artifactId>
+            <version>2.7.9</version>
+        </dependency>
 
 
         <dependency>
