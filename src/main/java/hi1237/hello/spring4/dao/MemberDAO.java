@@ -1,0 +1,8 @@
+package hi1237.hello.spring4.dao;
+
+import hi1237.hello.spring4.model.Member;
+
+public interface MemberDAO {
+
+    int insertMember(Member m);
+}
