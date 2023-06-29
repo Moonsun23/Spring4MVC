@@ -17,4 +17,16 @@ public class MemberServiceImpl implements MemberService{
         return isSaved;
     }
 
+    @Override
+    public boolean loginMember(Member m) {
+        boolean isLogin = false;
+
+        if(mdao.loginMember(m) != null)
+            isLogin = true;
+
+
+        return isLogin;
+
+    }
+
 }
