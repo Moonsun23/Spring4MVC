@@ -29,4 +29,10 @@ public class MemberServiceImpl implements MemberService{
 
     }
 
+    @Override
+    public Member readOneMember(String userid) {
+        return mdao.selectOneMember(userid);
+    }
+
+
 }
