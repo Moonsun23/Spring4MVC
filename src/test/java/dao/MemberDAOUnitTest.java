@@ -47,4 +47,16 @@ public class MemberDAOUnitTest {
         // sout문이 실행되면 null이 아니냐? 라는 뜻 - 검증함수
     }
 
+    @Test
+
+    public void selectOneMember() throws Exception {
+       String userid= "abc123";
+
+
+        // assertEquals(테스트메서드, 검증값)
+
+        System.out.println(mdao.selectOneMember(userid));
+        assertNotNull(mdao.selectOneMember(userid));
+        // sout문이 실행되면 null이 아니냐? 라는 뜻 - 검증함수
+    }
 }
