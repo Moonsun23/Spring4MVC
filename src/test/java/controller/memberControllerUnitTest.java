@@ -57,6 +57,7 @@ public class memberControllerUnitTest {
                         .param("userid", "abc123")
                         .param("passwd", "987xyz") )
                         .andExpect(redirectedUrl("/member/myinfo"));
+
     }
 
 }
