@@ -17,6 +17,7 @@ public class MemberDAOImpl implements MemberDAO{
     // sql.properties에 작성한 sql 불러우기
     @Value("#{sql['insertMember']}") private String insertSQL;
     @Value("#{sql['loginMember']}") private String loginSQL;
+    @Value("#{sql['selectOneMember']}") private String selectOneSQL;
 
 
     @Autowired
@@ -42,10 +43,12 @@ public class MemberDAOImpl implements MemberDAO{
                 RowMapper<Member> mapper = new LoginMapper();
 
         // 쿼리 실행: queryForObject(sql문, 매개변수,  Mapper) - 단일값 반환하는 실행문(?)
-        return jdbcTemplate.queryForObject(loginSQL, params, mapper);
+        m= jdbcTemplate.queryForObject(loginSQL, params, mapper);
+        return m;
     }
 
     private class LoginMapper implements RowMapper<Member> {
+
         @Override
         public Member mapRow(ResultSet rs, int num) throws SQLException {
             Member m = new Member();
@@ -62,6 +65,35 @@ public class MemberDAOImpl implements MemberDAO{
             //--------------------------------------------
             // 달걀 익을때까지 냄비 앞에서 기다리는거.. 혹은 타이머를 맞춰놓고 나 할일 하다가 타이머가 울리면 가는것..
             //
+        }
+
+
+
+
+    }
+
+    public Member selectOneMember(String userid) {
+        Object[] params = new Object[]{
+                userid
+        };
+        RowMapper<Member> mapper = new MemberMapper();
+
+        return jdbcTemplate.queryForObject(
+                selectOneSQL, params, mapper);
+    }
+
+    private class MemberMapper implements RowMapper<Member> {
+        @Override
+        public Member mapRow(ResultSet rs, int num) throws SQLException {
+            Member m = new Member(
+                    rs.getString(1), rs.getString(2),
+                    null, rs.getString(4),
+                    rs.getString(5), rs.getString(6)
+
+            );
+
+
+            return m;
         }
     }
 }
