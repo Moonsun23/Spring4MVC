@@ -32,4 +32,15 @@ public class MemberServiceUnitTest {
 
     }
 
+    @Test
+    public void loginMember() throws Exception {
+        Member m = new Member();
+        m.setUserid("abc123");
+        m.setPasswd("987xyz");
+        // assertEquals(테스트메서드, 검증값)
+        // abc123이라는 것(userid)에 unique 키를 넣어놔서 같은 값을 쓰면 안된다.
+        assertEquals(msrv.loginMember(m),  true);
+
+    }
+
 }
