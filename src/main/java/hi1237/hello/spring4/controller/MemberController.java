@@ -36,11 +36,11 @@ public class MemberController {
 
         String viewName= "/member/fail";
         if(msrv.saveMember(m))
-            viewName = "redirect: /member/login";
+            viewName = "redirect:/member/login";
             //회원가입처리
 
         // return "index"; // jsp:view resolver
-        return "redirect: /member/login";
+        return viewName;
 
     }
     @RequestMapping(value="/member/login", method=RequestMethod.GET)
