@@ -34,7 +34,7 @@ public class MemberController {
         // 로거 출력
         logger.info("member/joinok 호출!");
 
-        String viewName= "/member/fail";
+        String viewName= "redirect:/member/fail";
         if(msrv.saveMember(m))
             viewName = "redirect:/member/login";
             //회원가입처리
@@ -43,14 +43,25 @@ public class MemberController {
         return viewName;
 
     }
-    @RequestMapping(value="/member/login", method=RequestMethod.GET)
+
+    @RequestMapping(value = "/member/login", method = RequestMethod.GET)
     public String login(Model m) {
 
+        logger.info("member/login 호출!");
+
+        return "member/login.tiles";
+    }
+    @RequestMapping(value="/member/login", method=RequestMethod.POST)
+    public String login(Member m) {
+        String viewName="redirect:member/loginfail";
         // 로거 출력
         logger.info("member/loginok 호출!");
 
+        if (msrv.loginMember(m))
+            viewName = "redirect:/member/myinfo";
+
         // return "index"; // jsp:view resolver
-        return "member/login.tiles";
+        return viewName;
 
     }
     @RequestMapping("/member/myinfo")
