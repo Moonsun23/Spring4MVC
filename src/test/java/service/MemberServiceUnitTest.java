@@ -12,6 +12,7 @@ import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.transaction.annotation.Transactional;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration({"classpath:spring/servlet-context.xml",
@@ -40,6 +41,14 @@ public class MemberServiceUnitTest {
         // assertEquals(테스트메서드, 검증값)
         // abc123이라는 것(userid)에 unique 키를 넣어놔서 같은 값을 쓰면 안된다.
         assertEquals(msrv.loginMember(m),  true);
+
+    }
+
+    @Test
+    public void readOneMember() throws Exception {
+        String userid = "abc123";
+
+        assertNotNull(msrv.readOneMember(userid));
 
     }
 
