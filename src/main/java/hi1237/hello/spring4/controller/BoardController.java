@@ -10,21 +10,31 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 
 @Controller
+@RequestMapping("/board")
 public class BoardController {
 
 
     private Logger logger = LogManager.getLogger(BoardController.class);
 
-        @GetMapping("/board/list")
-        public String list(Model m) {
+        @GetMapping("/list")
+        public String list() {
 
-            // addAttribute(변수명, 대상객체)
-            m.addAttribute("sayHello", "Hello World! from Controller");
-
-            // 로거 출력
-            logger.info("board/list 호출");
 
             return "board/list.tiles";
 
         }
+    @GetMapping("/write")
+    public String write() {
+
+
+        return "board/write.tiles";
+
+    }
+    @GetMapping("/view")
+    public String view() {
+
+
+        return "board/view.tiles";
+
+    }
 }
