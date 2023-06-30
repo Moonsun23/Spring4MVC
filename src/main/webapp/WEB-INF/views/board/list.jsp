@@ -41,81 +41,40 @@
 
                                 </tr>
 
-                                <tr>
-                                        <td>1</td>
-                                        <td><a href="/board/view?bno=">시간은 금이라구, 친구!</a></td>
-                                        <td>abc123</td>
-                                        <td>2023-07-01</td>
-                                        <td>987</td>
+                                <%-- for(Board bd: boards)  --%>
+                                <c:forEach items="${boards}" var="bd">
 
-                                </tr>
-                                <tr>
-                                        <td>1</td>
-                                        <td>시간은 금이라구, 친구!</td>
-                                        <td>abc123</td>
-                                        <td>2023-07-01</td>
-                                        <td>987</td>
+                                        <tr>
+                                                <td>${bd.bno}</td>
+                                                <td><a href="/board/view?bno=">${bd.title}</a></td>
+                                                <td>${bd.userid}</td>
+                                                <td>${bd.regdate}</td>
+                                                <td>${bd.views}</td>
 
-                                </tr>
-                                <tr>
-                                        <td>1</td>
-                                        <td>시간은 금이라구, 친구!</td>
-                                        <td>abc123</td>
-                                        <td>2023-07-01</td>
-                                        <td>987</td>
-
-                                </tr>
-                                <tr>
-                                        <td>1</td>
-                                        <td>시간은 금이라구, 친구!</td>
-                                        <td>abc123</td>
-                                        <td>2023-07-01</td>
-                                        <td>987</td>
-
-                                </tr>
-                                <tr>
-                                        <td>1</td>
-                                        <td>시간은 금이라구, 친구!</td>
-                                        <td>abc123</td>
-                                        <td>2023-07-01</td>
-                                        <td>987</td>
-
-                                </tr>
-                                <tr>
-                                        <td>1</td>
-                                        <td>시간은 금이라구, 친구!</td>
-                                        <td>abc123</td>
-                                        <td>2023-07-01</td>
-                                        <td>987</td>
-
-                                </tr>
-                                <tr>
-                                        <td>1</td>
-                                        <td>시간은 금이라구, 친구!</td>
-                                        <td>abc123</td>
-                                        <td>2023-07-01</td>
-                                        <td>987</td>
-
-                                </tr>
-
+                                        </tr>
+                                </c:forEach>
 
                         </tbody>
 
                 </table>
 
                 <ul class="pagenation">
-                        <li>이전</li>
-                        <li class="cpage"><a href = "?cpg=">1</a></li>
-                        <li><a href = "?cpg=">2</a></li>
-                        <li><a href = "?cpg=">3</a></li>
-                        <li><a href = "?cpg=">4</a></li>
-                        <li><a href = "?cpg=">5</a></li>
-                        <li><a href = "?cpg=">6</a></li>
-                        <li><a href = "?cpg=">7</a></li>
-                        <li><a href = "?cpg=">8</a></li>
-                        <li><a href = "?cpg=">9</a></li>
-                        <li><a href = "?cpg=">10</a></li>
-                        <li>다음</li>
+                        <c:if test="${param.cpg - 1 gt 0}">
+                                <li><a href="?cpg=${param.cpg - 1}">이전</a></li>
+                        </c:if>
+                        <%-- for(int i=0; i<10; ++i)       --%>
+                        <c:forEach var="i" begin="1" end="10">
+                                <c:if test="${param.cpg ne i}">
+                                        <li><a href = "?cpg=${i}">${i}</a></li>
+                                </c:if>
+                                <c:if test="${param.cpg eq i}">
+                                        <li class="cpage"><a href = "?cpg=${i}">${i}</a></li>
+                                </c:if>
+                        </c:forEach>
+
+                        <c:if test="">
+                        <li><a href="?cpg=${param.cpg + 1}" ></a>다음</li>
+                        </c:if>
 
                 </ul>
         </main>
