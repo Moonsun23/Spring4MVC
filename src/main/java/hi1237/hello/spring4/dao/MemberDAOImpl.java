@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 
 @Repository("mdao")
 
@@ -43,7 +44,15 @@ public class MemberDAOImpl implements MemberDAO{
                 RowMapper<Member> mapper = new LoginMapper();
 
         // 쿼리 실행: queryForObject(sql문, 매개변수,  Mapper) - 단일값 반환하는 실행문(?)
-        m= jdbcTemplate.queryForObject(loginSQL, params, mapper);
+        // 단, 결과가 없거나 둘 이상인 경우 예외 발생! - 다루기 번거로움
+        // => JDK8 기능 중 Optional을 활용하거나
+        // => query(sql문, 매개변수, 매퍼) 로 변경 -> 리스트 기반 다중값 반환
+        //m= jdbcTemplate.queryForObject(loginSQL, params, mapper);
+
+        List<Member> results =
+                jdbcTemplate.query(loginSQL, params, mapper);
+        m = results.isEmpty() ? null : results.get(0);
+        // 결과값이 없으면 null, 결과값이 있으면 0(첫번째)부터...
         return m;
     }
 
