@@ -68,6 +68,7 @@ main {min-height: 500px}
 #view label { width: 110px; font-weight: bold; text-align: right}
 #contents, #view span { border: 1px solid #eeeeee; display: inline-block;  width: 400px; }
 #contents {min-height: 350px; white-space: pre; }
+/* white-space: pre 를 안쓰면 줄바꿈이 안된다..*/
 
 
 
