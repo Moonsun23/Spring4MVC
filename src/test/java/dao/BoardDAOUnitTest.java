@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -39,6 +40,17 @@ public class BoardDAOUnitTest {
 
         assertNotNull(result);
         System.out.println(result);
+    }
+
+    @Test
+    @Transactional
+    public void insertBoard() throws Exception {
+        Board bd = new Board(null,"오늘은 7월 3일", "abc123",
+                                            null, null, "월요일이다.");
+
+
+        assertEquals(bdao.insertBoard(bd), 1);
+        System.out.println(bd);
     }
 
 }
