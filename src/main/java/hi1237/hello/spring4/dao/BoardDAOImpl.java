@@ -15,8 +15,8 @@ import java.util.List;
 // 여기에 bdao를 써주니 BoardDAOUnitTest의 bdao의 빨간줄이 사라짐
 public class BoardDAOImpl implements BoardDAO {
 
-    @Value("#{sql['selectBoard']}")
-    private String selectSQL;
+    @Value("#{sql['selectBoard']}") private String selectSQL;
+    @Value("#{sql['selectOneBoard']}") private String selectOneSQL;
 
     @Autowired
     JdbcTemplate jdbcTemplate;
@@ -30,7 +30,16 @@ public class BoardDAOImpl implements BoardDAO {
         return jdbcTemplate.query(selectSQL, params, mapper);
     }
 
-    public class SelectMapper implements RowMapper<Board> {
+    @Override
+    public Board selectOneBoard(String bno){
+        Object[] params= new Object[] {bno};
+        RowMapper<Board> mapper= new SelectOneMapper();
+
+        return jdbcTemplate.queryForObject(
+            selectOneSQL, params, mapper);
+    }
+
+    private class SelectMapper implements RowMapper<Board> {
 
         @Override
         public Board mapRow(ResultSet rs, int num) throws SQLException {
@@ -42,5 +51,21 @@ public class BoardDAOImpl implements BoardDAO {
             return bd;
         }
 
-    }
-}
+    }//selectMapper
+
+    private class SelectOneMapper implements RowMapper<Board> {
+
+        @Override
+        public Board mapRow(ResultSet rs, int num) throws SQLException {
+            Board bd = new Board(rs.getString(1),
+                    rs.getString(2), rs.getString(3),
+                    rs.getString(4), rs.getString(5),
+                    rs.getString(6));
+
+            return bd;
+        }
+
+    } //selectOneMapper
+
+
+}   //class
