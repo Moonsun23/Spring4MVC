@@ -1,6 +1,7 @@
 package hi1237.hello.spring4.controller;
 
 
+import hi1237.hello.spring4.model.Board;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +25,8 @@ public class BoardController {
             logger.info("board/list 호출!!");
 
         m.addAttribute("boards", bsrv.readBoard(cpg));
+//        m.addAttribute("psnum", );     //페이지네이션 스타트 넘버의 약자 // 페이지네이션 시작 번호
+//        m.addAttribute("allpg", ???);       // 총 페이지 수
             return "board/list.tiles";
 
         }
@@ -35,8 +38,11 @@ public class BoardController {
 
     }
     @GetMapping("/view")
-    public String view() {
+    public String view(Model m, String bno) {
+        logger.info("board/view 호출!!");
+        Board board = bsrv.readOneBoard(bno);
 
+        m.addAttribute("board", board);
 
         return "board/view.tiles";
 
