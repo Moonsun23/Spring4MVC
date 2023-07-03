@@ -18,6 +18,7 @@
 
         <slf4j.version>1.7.36</slf4j.version>
         <log4j.version>2.12.4</log4j.version>
+        <aspectj.version>1.9.19</aspectj.version>
         <junit.version>4.13.2</junit.version>
         <!-- junit 버전 변경-->
     </properties>
@@ -130,6 +131,22 @@
             <artifactId>mariadb-java-client</artifactId>
             <version>2.7.9</version>
         </dependency>
+
+        <!-- aspectj 관련 라이브러리 추가        -->
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjweaver</artifactId>
+            <version>${aspectj.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjrt</artifactId>
+            <version>${aspectj.version}</version>
+        </dependency>
+
+
+
 
         <!-- junit4 -->
         <dependency>
