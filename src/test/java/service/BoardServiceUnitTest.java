@@ -46,7 +46,16 @@ public class BoardServiceUnitTest {
 
     }
 
+    @Test
+    @Transactional
+    public void saveBoard() throws Exception {
+        Board bd = new Board(null,"오늘은 7월 3일", "abc123",
+                null, null, "월요일이다.");
 
+        assertEquals(bsrv.saveBoard(bd), true);
+        System.out.println(bd);
+
+    }
 
 
 
