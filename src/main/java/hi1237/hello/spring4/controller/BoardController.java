@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import hi1237.hello.spring4.service.BoardService;
 
+import javax.servlet.http.HttpSession;
+
 
 @Controller
 @RequestMapping("/board")
@@ -32,8 +34,8 @@ public class BoardController {
 
         }
     @GetMapping("/write")
-    public String write() {
-
+    public String write(HttpSession sess) {
+        logger.info("board/write 호출!!");
 
         return "board/write.tiles";
 
@@ -41,6 +43,7 @@ public class BoardController {
 
     @PostMapping ("/write")
     public String writeok(Board bd){
+        logger.info("board/writeok 호출!!");
         String returnPage="redirect:/board/fail";
 
         if (bsrv.saveBoard(bd))
