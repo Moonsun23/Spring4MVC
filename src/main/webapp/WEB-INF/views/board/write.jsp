@@ -1,9 +1,9 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-<c:if test="${empty sessionScope.member}">
-        <script>location.href = "/member/login";</script>
-</c:if>
+<%--<c:if test="${empty sessionScope.member}">--%>
+<%--        <script>location.href = "/member/login";</script>--%>
+<%--</c:if>--%>
 <%--로그인 하지 않으면 게시글을 볼 수 없게 함--%>
 
         <main>
